@@ -1,0 +1,289 @@
+    .column.left{
+        float: left;
+        height: 100%;
+        width: 75%;
+    }
+
+    .column.right{
+        float: left;
+        min-height: 100%;
+        width: 25%;
+    }
+
+    td{
+        text-align: center;
+        border: none;
+        font-size: 1.2em;
+        font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+        font-weight: bold;
+        color: #cc2900;
+        background-color: #ffc081;
+    }
+
+    td.coluna{
+        border-style: none;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-bottom: 1em;
+        font-size: 1.5em;
+        background-color: #ffffff;
+    }
+
+    table.center{
+        padding: 5em 0 0 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body{
+        text-align: center;
+        padding-top: 5em;
+    }
+
+    body.background{
+        background-color: #d02209;
+        color: #ffffff;
+        font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+        font-size: 3.5em;
+        font-weight: bold;
+        padding-top: 1em;
+        height: 100%;
+        width: auto;
+    }
+
+    img.left{
+        display: block;
+        margin: 0 0 1em 1em;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    img.right{
+        display: block;
+        margin: 0 1em 1em 0;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    img.topR{
+        display: block;
+        margin: 1em 1em 0 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    img.topL{
+        display: block;
+        margin: 1em 0 0 1em;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    a{
+        padding-right: 5em;
+        appearance: none;
+    }
+
+/* Header */
+
+    #header {
+        -moz-align-items: center;
+        -webkit-align-items: center;
+        -ms-align-items: center;
+        align-items: center;
+        background: #d02209;
+        cursor: default;
+        height: 5em;
+        left: 0;
+        line-height: 5em;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10001;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.075);
+        text-align: left;
+    }
+
+    #header .logo {
+        color: #ffffff;
+        font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+        font-size: 2.5em;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        margin-top: -5px;
+        margin-left: 15px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    #header nav {
+        position: absolute;
+        top: 0;
+        height: inherit;
+        line-height: inherit;
+    }
+
+    #header nav.right {
+        right: 10em;
+    }
+
+/* Button */
+
+    .button {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        background-color: #ffb366;
+        border-radius: 8px;
+        border: 0;
+        color: #cc2900;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Verdana, Tahoma, sans-serif;/*"Montserrat", sans-serif;*/
+        font-weight: bold;
+        font-size: 2em;
+        height: 0;
+        line-height: 0;
+        padding: 1.8em 0.5em;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .button.mini{
+        font-size: 1.2em;
+        padding: 1em 0.5em;
+    }
+
+    .button.reset{
+        font-size: 1.2em;
+        padding: 1em;
+        display: block;
+        margin: 0 1em 1em 0;
+        position: absolute;
+        bottom: 0;
+        background-color: #d02209;
+        color: #ffffff;
+    }
+
+    .button.submit{
+        font-size: 1.5em;
+        padding: 1em 0.5em;
+        display: block;
+        margin: 0 1em 1em 0;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+/* Banner */
+
+    #banner {
+        padding: 10em 0 3em 0;
+        text-align: center;
+    }
+
+/* Number input */
+
+    .quantity {
+        position: relative;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button
+    {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number]
+    {
+        -moz-appearance: textfield;
+    }
+
+    .quantity input {
+        width: 45px;
+        height: 42px;
+        line-height: 1;
+        float: left;
+        display: block;
+        padding: 0;
+        margin: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        border: none;
+        border-radius: 8px;
+        background-color: #ff9966;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+
+    .quantity input:focus {
+        outline: 0;
+    }
+
+    .quantity-nav {
+        float: left;
+        position: relative;
+        height: 42px;
+    }
+
+    .quantity-button {
+        position: relative;
+        cursor: pointer;
+        border-left: 1px solid #ff9966;
+        width: 40px;
+        text-align: center;
+        color: #333;
+        font-size: 18px;
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        font-size: 1em;
+        line-height: 0.9;
+        font-weight: bold;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+
+    .quantity-button.quantity-up {
+        position: absolute;
+        height: 50%;
+        top: 0;
+        background-color: #33cc33;
+        border-top-right-radius: 8px;
+    }
+
+    .quantity-button.quantity-down {
+        position: absolute;
+        bottom: -1px;
+        height: 50%;
+        background-color: #ff1a1a;
+        border-bottom-right-radius: 8px;
+    }
+
+/* Footer */
+
+    #footer {
+        padding: 6em 0 0 0;
+        text-align: center;
+    }
+
+    #footer.right{
+        right: 2em;
+        display: none;
+    }
