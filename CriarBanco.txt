@@ -1,0 +1,147 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema pagkain
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema pagkain
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `pagkain` DEFAULT CHARACTER SET utf8 ;
+USE `pagkain` ;
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_pedido`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_pedido` (
+  `ped_id` INT NOT NULL AUTO_INCREMENT,
+  `ped_data` DATETIME NOT NULL,
+  PRIMARY KEY (`ped_id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_massa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_massa` (
+  `mas_id` INT NOT NULL AUTO_INCREMENT,
+  `mas_descricao` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`mas_id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_modo_preparo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_modo_preparo` (
+  `mpr_id` INT NOT NULL AUTO_INCREMENT,
+  `mpr_descricao` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`mpr_id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_ingredientes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_ingredientes` (
+  `ing_id` INT NOT NULL AUTO_INCREMENT,
+  `ing_descricao` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ing_id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_molho`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_molho` (
+  `mol_id` INT NOT NULL AUTO_INCREMENT,
+  `mol_descricao` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`mol_id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_produto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_produto` (
+  `pro_id` INT NOT NULL AUTO_INCREMENT,
+  `pro_descricao` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`pro_id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_itens_pedido`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_itens_pedido` (
+  `ipe_id` INT NOT NULL AUTO_INCREMENT,
+  `ped_id` INT NOT NULL,
+  `mas_id` INT NOT NULL,
+  `mpr_id` INT NOT NULL,
+  `mol_id` INT NOT NULL,
+  `pro_id` INT NOT NULL,
+  `ipe_qtd_produto` INT NOT NULL,
+  PRIMARY KEY (`ipe_id`),
+  INDEX `fk_tbl_itens_pedido_tbl_pedido_idx` (`ped_id` ASC),
+  INDEX `fk_tbl_itens_pedido_tbl_massa1_idx` (`mas_id` ASC),
+  INDEX `fk_tbl_itens_pedido_tbl_modo_preparo1_idx` (`mpr_id` ASC),
+  INDEX `fk_tbl_itens_pedido_tbl_molho1_idx` (`mol_id` ASC),
+  INDEX `fk_tbl_itens_pedido_tbl_produto1_idx` (`pro_id` ASC),
+  CONSTRAINT `fk_tbl_itens_pedido_tbl_pedido`
+    FOREIGN KEY (`ped_id`)
+    REFERENCES `pagkain`.`tbl_pedido` (`ped_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_itens_pedido_tbl_massa1`
+    FOREIGN KEY (`mas_id`)
+    REFERENCES `pagkain`.`tbl_massa` (`mas_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_itens_pedido_tbl_modo_preparo1`
+    FOREIGN KEY (`mpr_id`)
+    REFERENCES `pagkain`.`tbl_modo_preparo` (`mpr_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_itens_pedido_tbl_molho1`
+    FOREIGN KEY (`mol_id`)
+    REFERENCES `pagkain`.`tbl_molho` (`mol_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_itens_pedido_tbl_produto1`
+    FOREIGN KEY (`pro_id`)
+    REFERENCES `pagkain`.`tbl_produto` (`pro_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pagkain`.`tbl_itens_pedido_ingredientes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pagkain`.`tbl_itens_pedido_ingredientes` (
+  `ipi_id` INT NOT NULL AUTO_INCREMENT,
+  `ing_id` INT NOT NULL,
+  `ipe_id` INT NOT NULL,
+  PRIMARY KEY (`ipi_id`),
+  INDEX `fk_tbl_itens_pedido_ingredientes_tbl_ingredientes1_idx` (`ing_id` ASC),
+  INDEX `fk_tbl_itens_pedido_ingredientes_tbl_itens_pedido1_idx` (`ipe_id` ASC),
+  CONSTRAINT `fk_tbl_itens_pedido_ingredientes_tbl_ingredientes1`
+    FOREIGN KEY (`ing_id`)
+    REFERENCES `pagkain`.`tbl_ingredientes` (`ing_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_itens_pedido_ingredientes_tbl_itens_pedido1`
+    FOREIGN KEY (`ipe_id`)
+    REFERENCES `pagkain`.`tbl_itens_pedido` (`ipe_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
